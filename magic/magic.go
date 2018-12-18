@@ -2,30 +2,21 @@ package magic
 
 import (
 	"database/sql"
-	"log"
-
-	"github.com/rossus/goDatabaseProbe/common"
+	"github.com/rossus/goDatabaseProbe/magic/retriever"
 )
-
-const log_prefix = "MAGIC: "
 
 func DoAllMagicPossibleWithThatDBPlease(db *sql.DB) {
 
-	var (
-		id int
-		name string
-	)
-
-	rows, err := db.Query("select id, name from users where id = $1", 1)
-	common.CheckError(log_prefix, err)
-	defer rows.Close()
-
-	for rows.Next() {
-		err = rows.Scan(&id, &name)
-		common.CheckError(log_prefix, err)
-		log.Println(log_prefix, id, name)
-	}
-
-	err = rows.Err()
-	common.CheckError(log_prefix, err)
+	//I. Retrieving result sets
+	//
+	//Based on http://go-database-sql.org/retrieving.html
+	//
+	//There are several idiomatic operations to retrieve results from the datastore.
+	//1. Execute a query that returns rows:
+	retriever.FetchDataFrom(db)
+	//2. Prepare a statement for repeated use, execute it multiple times, and destroy it:
+	retriever.PrepareQuery(db)
+	//3. Execute a statement in a once-off fashion, without preparing it for repeated use.
+	//4. Execute a query that returns a single row. There is a shortcut for this special case:
+	retriever.SingleRowQuery(db)
 }
