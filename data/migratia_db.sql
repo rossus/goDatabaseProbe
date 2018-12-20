@@ -1,7 +1,7 @@
 DELETE FROM users;
 
-INSERT INTO users(id, name) VALUES (1, 'Romanos');
-INSERT INTO users(id, name) VALUES (2, 'Konstantinos');
-INSERT INTO users(id, name) VALUES (3, 'Herakleios');
-INSERT INTO users(id, name) VALUES (4, 'Ioustinos');
-INSERT INTO users(id, name) VALUES (5, 'Basileios');
+INSERT INTO users(name) VALUES ('Romanos');
+INSERT INTO users(name) VALUES ('Konstantinos');
+INSERT INTO users(name) VALUES ('Herakleios');
+INSERT INTO users(name) VALUES ('Ioustinos');
+INSERT INTO users(name) VALUES ('Basileios');

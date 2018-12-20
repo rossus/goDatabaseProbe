@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-const log_prefix = "MAGIC: RETRIEVER: "
+const log_prefix = "Magic: Retriever: "
 
 func FetchDataFrom(db *sql.DB)  {
 
